@@ -9,7 +9,7 @@
 import UIKit
 
 class TestCollectionViewCell: UICollectionViewCell {
-
+    
     var container: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -22,12 +22,19 @@ class TestCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    var colorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.red
-        view.layer.cornerRadius = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+//    var colorView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = UIColor.red
+//        view.layer.cornerRadius = 10
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+    
+    var imageView: UIImageView = {
+        let imageView = UIImageView()
+        //imageView.image = UIImage(named:"plant")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override init(frame: CGRect) {
@@ -38,11 +45,12 @@ class TestCollectionViewCell: UICollectionViewCell {
         self.container.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         self.container.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
         
-        self.container.addSubview(self.colorView)
-        self.colorView.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
-        self.colorView.centerYAnchor.constraint(equalTo: self.container.centerYAnchor).isActive = true
-        self.colorView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        self.colorView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        //self.container.addSubview(self.colorView)
+        self.container.addSubview(self.imageView)
+        self.imageView.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
+        self.imageView.centerYAnchor.constraint(equalTo: self.container.centerYAnchor).isActive = true
+        self.imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        self.imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     required init?(coder: NSCoder) {
