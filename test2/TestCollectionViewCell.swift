@@ -29,14 +29,7 @@ class TestCollectionViewCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-//    var imageView: UIImageView = {
-//        let imageView = UIImageView()
-//        //imageView.image = UIImage(named:"plant")
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        return imageView
-//    }()
-    
+       
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.addSubview(self.container)

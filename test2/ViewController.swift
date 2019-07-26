@@ -15,13 +15,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //TODO: delete colors
     let colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange, UIColor.purple]
     
-    private var searches: [FlickrSearchResults] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    private let flickr = Flickr()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // init collection view
@@ -92,39 +85,3 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 }
 
-// MARK: - Text Field Delegate
-extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 1
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
-        textField.addSubview(activityIndicator)
-        activityIndicator.frame = textField.bounds
-        activityIndicator.startAnimating()
-        
-        flickr.searchFlickr(for: textField.text!) { searchResults in
-            activityIndicator.removeFromSuperview()
-            
-            switch searchResults {
-            case .error(let error) :
-                // 2
-                print("Error Searching: \(error)")
-            case .results(let results):
-                // 3
-                print("Found \(results.searchResults.count) matching \(results.searchTerm)")
-                self.searches.insert(results, at: 0)
-                // 4
-                self.collectionView?.reloadData()
-            }
-        }
-        
-        textField.text = nil
-        textField.resignFirstResponder()
-        return true
-    }
-}
-// MARK: - Private
-private extension ViewController {
-    func photo(for indexPath: IndexPath) -> FlickrPhoto {
-        return searches[indexPath.section].searchResults[indexPath.row]
-    }
-}
