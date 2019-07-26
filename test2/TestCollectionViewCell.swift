@@ -38,7 +38,6 @@ class TestCollectionViewCell: UICollectionViewCell {
         self.container.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         self.container.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
         
-        //self.container.addSubview(self.colorView)
         self.container.addSubview(self.colorView)
         self.colorView.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
         self.colorView.centerYAnchor.constraint(equalTo: self.container.centerYAnchor).isActive = true

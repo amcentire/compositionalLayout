@@ -37,10 +37,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
             ])
     }
-    
-    
-    // data source
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
@@ -60,10 +57,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1.0), heightDimension: NSCollectionLayoutDimension.absolute(44)))
+            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1), heightDimension: NSCollectionLayoutDimension.absolute(44)))
             item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),  heightDimension: .absolute(50))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: self.numberOfColumns(section: section))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
             return section
@@ -71,16 +68,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return layout
     }
     
-    func numberOfColumns(section: Int) -> Int {
-        switch section {
-        case 0:
-            return 5
-        case 1:
-            return 3
-        default:
-            return 1
-        }
-    }
+//    func numberOfColumns(section: Int) -> Int {
+//        switch section {
+//        case 0:
+//            return 5
+//        case 1:
+//            return 3
+//        default:
+//            return 1
+//        }
+//    }
     
 
 }
